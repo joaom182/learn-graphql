@@ -20,7 +20,14 @@ export const UserAttributes: ModelAttributes<User> = {
   },
 };
 
-class User extends Model {
+export interface IUser {
+  id: number;
+  name: string;
+  email: string | null;
+  age: number | null;
+}
+
+class User extends Model implements IUser {
   public id!: number;
   public name!: string;
   public email!: string | null;

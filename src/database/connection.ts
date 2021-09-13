@@ -12,7 +12,7 @@ function setupModels(connection: Sequelize) {
   Question.setup(connection);
 }
 
-export async function connect(options: Options): Promise<Sequelize> {
+export function connect(options: Options): Sequelize {
   const key = options.database as string;
 
   if (connections[key]) return connections[key];

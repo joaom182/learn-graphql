@@ -5,10 +5,20 @@ export default gql`
     users: [User]
   }
 
+  extend type Mutation {
+    insert_user(payload: UserInput!): User
+  }
+
   type User {
-    id: ID!
+    id: Int
     name: String!
     email: String!
-    age: String!
+    age: Int!
+  }
+
+  input UserInput {
+    name: String!
+    email: String!
+    age: Int!
   }
 `;
