@@ -20,7 +20,7 @@ module.exports = {
       'error',
       {
         env: 'apollo',
-        schemaJson: require('./src/graphql/typeDefs/schema.json'),
+        schemaJson: require('./src/graphql/schema.json'),
       },
     ],
   },
