@@ -11,8 +11,8 @@ app.ts
 import { ApolloServer } from 'apollo-server';
 
 const app = new ApolloServer({
-  typeDefs: [...],
-  resolvers: {...},
+  typeDefs: [],
+  resolvers: {},
 });
 
 export default app;
