@@ -28,6 +28,43 @@ app
   .then(() => console.log(`Server is running on port :${port}`));
 ```
 
+# Integration tests for resolvers + database
+
+resolvers.spec.ts
+```ts
+/**
+ * @jest-environment ./src/configs/jest-environment
+ */
+
+import { Options } from 'sequelize/types';
+import app from '~/app';
+import dbOptions from '~configs/database';
+import { connect } from '~database/connection';
+
+describe('User resolvers', () => {
+  // Connect to a SQLITE test database. See jest-environment.js file to more details.
+  beforeAll(async () => {
+    await connect(dbOptions as Options);
+  });
+
+  it('should query all users', async () => {
+    const response = await app.executeOperation({
+      query: `
+        query GetAllUsers {
+          users {
+            id
+            age
+            email
+            name
+          }
+        }
+      `,
+    });
+    expect(response.data?.users).toBeTruthy();
+    expect(response.errors).toBeUndefined();
+  });
+});
+```
 # Tooling
 
 ## Eslint with GraphQL
