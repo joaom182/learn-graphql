@@ -16,6 +16,7 @@ module.exports = {
       {
         alias: {
           '~configs': './src/configs',
+          '~graphql': './src/graphql',
           '~database': './src/database',
           '~models': './src/models',
         },
