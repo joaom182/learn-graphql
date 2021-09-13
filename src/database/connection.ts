@@ -1,7 +1,7 @@
 import { Sequelize } from 'sequelize';
 import { Options } from 'sequelize/types';
-import User from '../models/User';
-import Question from '../models/Question';
+import Question from '~modules/questions/models/Question';
+import User from '~modules/users/models/User';
 
 const connections: {
   [key: string]: Sequelize;

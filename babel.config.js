@@ -18,7 +18,6 @@ module.exports = {
           '~configs': './src/configs',
           '~graphql': './src/graphql',
           '~database': './src/database',
-          '~models': './src/models',
           '~modules': './src/modules',
         },
       },
