@@ -1,3 +1,5 @@
+require('../configs/envs');
+
 const dbOptions = {
   dialect: process.env.DB_DIALECT,
   storage: process.env.DB_STORAGE,
