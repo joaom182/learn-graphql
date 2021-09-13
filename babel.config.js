@@ -15,6 +15,7 @@ module.exports = {
       'module-resolver',
       {
         alias: {
+          '~/': './src/',
           '~configs': './src/configs',
           '~graphql': './src/graphql',
           '~database': './src/database',
