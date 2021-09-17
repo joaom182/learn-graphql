@@ -1,9 +1,17 @@
 import { ApolloServer } from 'apollo-server';
-import { resolvers, typeDefs } from '~graphql';
+import * as path from 'path';
+import { buildSchema } from 'type-graphql';
+import UserResolver from './modules/users/graphql/resolvers';
 
-const app = new ApolloServer({
-  typeDefs,
-  resolvers,
-});
+async function app() {
+  const schema = await buildSchema({
+    resolvers: [UserResolver],
+    emitSchemaFile: path.resolve(__dirname, 'schema.gql'),
+  });
+
+  return new ApolloServer({
+    schema,
+  });
+}
 
 export default app;

@@ -5,9 +5,9 @@ import dbOptions from '~configs/database';
 const port = process.env.PORT || 5002;
 
 export default {
-  init: () => {
+  init: async () => {
     connect(dbOptions as Options);
-    app
+    (await app())
       .listen({ port })
       .then(() => console.log(`Server is running on port :${port}`));
   },

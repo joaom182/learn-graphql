@@ -1,4 +1,5 @@
 import { DataTypes, Model, ModelAttributes, Sequelize } from 'sequelize';
+import { Field, ID, ObjectType } from 'type-graphql';
 
 export const UserAttributes: ModelAttributes<User> = {
   id: {
@@ -21,18 +22,32 @@ export const UserAttributes: ModelAttributes<User> = {
 };
 
 export interface IUser {
-  id: number;
-  name: string;
-  email: string | null;
-  age: number | null;
+  id?: number;
+  name?: string;
+  email?: string;
+  age?: number;
+  created_at?: Date;
+  updated_at?: Date;
 }
 
+@ObjectType()
 class User extends Model implements IUser {
+  @Field((type) => ID)
   public id!: number;
+
+  @Field({ nullable: true })
   public name!: string;
-  public email!: string | null;
-  public age!: number | null;
+
+  @Field({ nullable: true })
+  public email!: string;
+
+  @Field({ nullable: true })
+  public age!: number;
+
+  @Field({ nullable: true })
   public readonly created_at!: Date;
+
+  @Field({ nullable: true })
   public readonly updated_at!: Date;
 
   static setup(sequelize: Sequelize) {

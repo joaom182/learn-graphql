@@ -13,7 +13,9 @@ describe('User resolvers', () => {
   });
 
   it('should query all users', async () => {
-    const response = await app.executeOperation({
+    const response = await (
+      await app()
+    ).executeOperation({
       query: `
         query GetAllUsers {
           users {
