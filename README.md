@@ -67,6 +67,37 @@ describe('User resolvers', () => {
 ```
 # Tooling
 
+## Transpiling with Babel
+
+Install Babel plugins as dev dependencies to transpile the code
+```
+yarn add @babel/plugin-transform-typescript babel-plugin-transform-typescript-metadata @babel/plugin-proposal-decorators @babel/plugin-proposal-class-properties @babel/preset-typescript -D
+```
+
+Make sure that your `babel.config.js` includes the following configuration:
+```js
+module.exports = {
+  presets: [
+    [
+      '@babel/preset-env',
+      {
+          targets: {
+            node: 'current',
+          },
+      },
+    ],
+    '@babel/preset-typescript',
+  ],
+  plugins: [
+    ['@babel/plugin-transform-typescript'],
+    ['babel-plugin-transform-typescript-metadata'],
+    ['@babel/plugin-proposal-decorators', { legacy: true }],
+    ['@babel/plugin-proposal-class-properties'],
+  ],
+  ignore: ['**/*.spec.ts'],
+};
+```
+
 ## Eslint with GraphQL
 
 Install `eslint-plugin-graphql`
