@@ -32,7 +32,7 @@ export interface IUser {
 
 @ObjectType()
 class User extends Model implements IUser {
-  @Field((type) => ID)
+  @Field(() => ID)
   public id!: number;
 
   @Field({ nullable: true })

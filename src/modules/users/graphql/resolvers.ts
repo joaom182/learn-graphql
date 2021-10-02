@@ -28,8 +28,9 @@ export class UserInput implements IUser {
 @Resolver(User)
 class UserResolver {
   @Query(() => [User!]!)
-  users(): Promise<IUser[]> {
-    return getAllUsers();
+  async users(): Promise<IUser[]> {
+    const users = await getAllUsers();
+    return users.map((u) => u.toJSON());
   }
 
   @Query(() => User, { nullable: true })
@@ -37,22 +38,24 @@ class UserResolver {
     @Arg('id', () => ID!)
     id: number
   ): Promise<IUser | null> {
-    return getUserById(id);
+    const user = await getUserById(id);
+    if (!user) return null;
+    return user.toJSON();
   }
 
   @Mutation(() => User)
-  insert_user(
+  async insert_user(
     @Arg('payload', () => UserInput!) payload: UserInput
   ): Promise<IUser> {
-    return insertUser(payload);
+    return (await insertUser(payload)).toJSON();
   }
 
   @Mutation(() => User, { nullable: true })
-  update_user(
+  async update_user(
     @Arg('id', () => ID!) id: Identifier,
     @Arg('payload', () => UserInput!) payload: UserInput
   ): Promise<IUser | null> {
-    return updateUser(id, payload);
+    return (await updateUser(id, payload)).toJSON();
   }
 }
 

@@ -1,5 +1,5 @@
 import User, { IUser } from '../models/User';
 
-export default function getAllUsers(): Promise<IUser[]> {
+export default function getAllUsers(): Promise<User[]> {
   return User.findAll();
 }
