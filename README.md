@@ -1,7 +1,7 @@
 # Installing
 
 ```
-yarn add apollo-server graphql
+yarn add apollo-server graphql type-graphql
 ```
 
 # Initializing Apollo Server
