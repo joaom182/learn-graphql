@@ -3,7 +3,6 @@ import { DocumentNode } from 'graphql';
 import { merge } from 'lodash';
 
 import userResolvers from '~modules/users/graphql/resolvers';
-import User from '~modules/users/graphql/type-defs';
 
 const Root = gql`
   type Query {
@@ -15,5 +14,5 @@ const Root = gql`
   }
 `;
 
-export const typeDefs: DocumentNode[] = [Root, User];
+export const typeDefs: DocumentNode[] = [Root];
 export const resolvers = merge({}, userResolvers);
